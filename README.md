@@ -18,8 +18,13 @@ Create a secure Virtual Private Cloud (VPC) on AWS to establish isolated network
 
 <h2>Project walk-through:</h2>
 
-<p align="center">
-Infrastructure Design - End State <br/>
+<p align="center"> 
+ Infrastructure Design -  State 0 <br/>
+<img src="https://i.imgur.com/D27Yy76.pngg" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+
+<br />
+<br />
+ Infrastructure Design - End State <br/>
 <img src="https://i.imgur.com/cUYFkwh.pngg" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
  
 <br />
