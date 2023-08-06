@@ -22,7 +22,7 @@ Create a secure Virtual Private Cloud (VPC) on AWS to establish isolated network
  VPC Infrastructure Design -  State 0 <br/>
  <img src="https://i.imgur.com/XvMtAg9.pngg" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
 <img src="https://i.imgur.com/D27Yy76.pngg" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
-
+- <b>A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources in a virtual network that you define. It allows you to have complete control over your virtual networking environment, including IP address ranges, subnets, route tables, and network gateways. With a VPC, you can securely connect your AWS resources to your on-premises network using VPN or AWS Direct Connect. It provides a secure and scalable infrastructure for running your applications in the cloud while maintaining control over your network configuration.</b> 
 <br />
 <br />
  VPC Infrastructure Design - End State <br/>
