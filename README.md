@@ -50,6 +50,60 @@ Create a secure Virtual Private Cloud (VPC) on AWS to establish isolated network
 <img src="https://i.imgur.com/MTx65Zc.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
 <img src="https://i.imgur.com/Ot82sML.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
 
+
+<h3> VPC Infrastructure Design with Router  <h3/>
+ - The VPC router is responsible for routing traffic between subnets within the VPC based on the routing tables configured. It also performs Network Address Translation (NAT) for instances in private subnets to communicate with the internet <br />
+ 
+ <img src="https://i.imgur.com/XpiJdqQ.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+
+ 
+ 
+<h3> VPC Infrastructure Design with NACL <h3/>
+<img src="https://i.imgur.com/4UkZgIr.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+
+ - NACLS contain rules grouped into INBOUND and OUTBOUND. Inbound rules match traffic ENTERTING the subnet, Outbound rules match traffic LEAVING the subnet
+ - NACLs are STATELESS, both the REQUEST and RESPOND part of every communication need individual rules : 1* INBOUND and 1* OUTBOUND
+ - NACLs can EXPLICITLY ALLOW and DENY
+ - IPs/CIDR, Ports & protocols - no logical resources
+ - cannot be assigned to AWS resources - only subnets
+ - Use together with Security Groupe to add explicit DENY
+   
+
+ <h3> VPC Infrastructure Design with Security Groups <h3/>
+  
+  - STATEFUL - detect response traffic automatically
+  - Allowed (IN or OUT ) request = allowed response
+  - NO EXPLICIT DENY ... only ALLOW or Implicit DENY
+  - can't block specific actors
+  - Supports IP/CIDR and logical resources including other security groups AND ITSELF
+  - Attached to ENI's not instances 
+  - Security Groupe Logical References: scale, any new instances which use webSH are allowed to communicate with any instances using the APP SG
+
+    <img src="https://i.imgur.com/jc9s7l3.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+
+ <h3> VPC Infrastructure Design with Internet Gateway (IGW) <h3/>
+  
+ - "Can be" created and attached to AWS VPCs
+ - 1 to 1 relationship: 1 IGW per VPC, 1 VPC per IGW
+ - Architecturally at the VPC and AWS Public Zone Builder
+ - used to access AWS Public Services and Public Internet
+ - Highly available by default and scales by default
+ - Works with IPv4 and IPv6 : IN and OUT
+  
+ - Configure IGW step by step :
+ (1) Create IGW
+ (2) Attach IGW to VPC 
+ (3) Create custom Route Table 
+ (4) Associate RT
+ (5) Default Routes => IGW
+ (6) Subnet allocate Public IPv4
+
+- Egress-Only Internet Gateway : with IPv4 addresses are private or public. NAT allows private IPs to access public networks without allowing externally initiated connections (IN). With IPv6 all IPs are public. Internet Gate (IPv6) allows all IPs IN and Out. Egress-Only is outbound-only for IPv6
+ 
+ 
+ 
+ 
+
 <br />
 <br />
 
