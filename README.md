@@ -89,20 +89,36 @@ Create a secure Virtual Private Cloud (VPC) on AWS to establish isolated network
  - used to access AWS Public Services and Public Internet
  - Highly available by default and scales by default
  - Works with IPv4 and IPv6 : IN and OUT
+ 
   
  - Configure IGW step by step :
  (1) Create IGW
  (2) Attach IGW to VPC 
- (3) Create custom Route Table 
+ (3) Create a custom Route Table 
  (4) Associate RT
  (5) Default Routes => IGW
  (6) Subnet allocate Public IPv4
 
-- Egress-Only Internet Gateway : with IPv4 addresses are private or public. NAT allows private IPs to access public networks without allowing externally initiated connections (IN). With IPv6 all IPs are public. Internet Gate (IPv6) allows all IPs IN and Out. Egress-Only is outbound-only for IPv6
+- Egress-Only Internet Gateway: with IPv4 addresses private or public. NAT allows private IPs to access public networks without allowing externally initiated connections (IN). With IPv6 all IPs are public. Internet Gate (IPv6) allows all IPs IN and Out. Egress-Only is outbound-only for IPv6
  
- 
- 
- 
+ <h3> VPC Infrastructure Design with NAT Gateway <h3
+
+                                                  
+ - run from a public subnet and uses elastic IP (Static IPv4)
+ - AZ resilient Service (HA in that AZ) - hardware failure
+ - For region resilience - NATGW in each AZ
+ - RT for each AZ with that NATGW as the target
+ - Separate failure domain (service consumption IN AN AZ)
+ - For S3/DynamoDB - use gateway endpoint 0 cost
+ - NACL on the subnets ... SG on the private instances
+ - No Security Group on NAT Gateway
+ - 
+ <img src="https://i.imgur.com/50pyuwV.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+ <img src="https://i.imgur.com/kvCsbZB.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+ <img src="https://i.imgur.com/pEFmAHa.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+ <img src="https://i.imgur.com/yLiABC6.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+ <img src="https://i.imgur.com/tn5CG55.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
+ <img src="https://i.imgur.com/oVrmbF9.png" height="80%" width="80%" alt="Building and Securing an AWS VPC Steps"/>
 
 <br />
 <br />
